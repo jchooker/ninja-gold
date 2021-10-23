@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ninja_gold_app'
+    'ninja_gold_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
