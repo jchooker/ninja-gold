@@ -12,41 +12,63 @@
 <body>
     <div id="wrapper">
         <div id="row-1">
-            <form action="">
-                {% csrf_token %}
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-6 col-form-label">Your Gold:</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3">
-                    </div>
-                </div>
-            </form>
+            <h4>Your Gold:</h4>
+            <div id="curr_gold_display">
+                <p class='{{curr_gold}}'>{{request.session.curr_gold}}</p>
+                <!-- still figuring out how these^ terms pass from the views to html -->
+            </div>
         </div>
         <div id="row-2">
             <div class="sub-box">
                 <h3>Farm</h3>
                 <p>(earns 10-20 gold)</p>
-                <a href="/" class="btn btn-primary">Find Gold!</a>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="btn_press" value="1">
+                    <button class="btn btn-primary">Find Gold!</button>
+                </form>
+                
             </div>
             <div class="sub-box">
                 <h3>Cave</h3>
                 <p>(earns 5-10 gold)</p>
-                <a href="/" class="btn btn-primary">Find Gold!</a>
+                <form action="/process_money" method="POST"> 
+                    {% csrf_token %}
+                    <input type="hidden" name="btn_press" value="2">
+                    <button class="btn btn-primary">Find Gold!</button>
+                </form>
             </div>
             <div class="sub-box">
                 <h3>House</h3>
                 <p>(earns 2-5 gold)</p>
-                <a href="/" class="btn btn-primary">Find Gold!</a>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="btn_press" value="3">
+                    <button class="btn btn-primary">Find Gold!</button>
+                </form>
             </div>
             <div class="sub-box">
                 <h3>Casino</h3>
                 <p>(earns/takes 0-50 gold)</p>
-                <a href="/" class="btn btn-primary">Find Gold!</a>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="btn_press" value="4">
+                    <button class="btn btn-primary">Find Gold!</button>
+                </form>
             </div>
         </div>
         <div class="form-group" id="activities">
-            <label for="exampleFormControlTextarea1">Activities: </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <h4>Activities: </h4>
+            <div id="activities_output">
+                {%for x in request.session.stmt %}
+            
+                    {%if "Lost" in x %}
+                <p style="color:red">{{x}}</p>
+                {% else %}
+                <p style="color:green">{{x}}</p>
+                {% endif %}
+                {%endfor%}
+            </div>
         </div>
     </div>
 </body>

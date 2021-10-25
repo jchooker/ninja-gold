@@ -15,9 +15,18 @@
 
 #row-1 {
     display: flex;
+    flex-direction: column;
     /* justify-content: left; */
     width: 500px;
     margin: 20px 20px 20px 20px;
+}
+
+#curr_gold_display {
+    height: 50px;
+    width: 200px;
+    background-color: cornsilk;
+    border: 1px solid dimgrey;
+    border-radius: 6px;
 }
 
 #row-2 {
@@ -39,4 +48,13 @@
 #activities {
     margin: 20px 20px 20px 20px;
     width: 800px;
+}
+
+#activities_output {
+    height: 300px;
+    width: 600px;
+    background-color: cornsilk;
+    border: 1px solid dimgrey;
+    border-radius: 6px;
+    overflow-y: scroll;
 }
